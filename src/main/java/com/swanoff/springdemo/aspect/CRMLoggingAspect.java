@@ -3,6 +3,7 @@ package com.swanoff.springdemo.aspect;
 import java.util.logging.Logger;
 
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 @Aspect
@@ -13,6 +14,18 @@ public class CRMLoggingAspect {
 	private Logger myLogger = Logger.getLogger(getClass().getName());
 	
 	// setup pointcut declarations
+	
+	@Pointcut("execution(* com.swanoff.springdemo.controller.*.*(..))")
+	private void forControllerPackage() {}
+	
+	@Pointcut("execution(* com.swanoff.springdemo.service.*.*(..))")
+	private void forServicePackage() {}
+	
+	@Pointcut("execution(* com.swanoff.springdemo.dao.*.*(..))")
+	private void forDaoPackage() {}
+	
+	@Pointcut("forControllerPackage() || forServicePackage() || forDaoPackage()")
+	private void forAppFlow() {}
 	
 	// add @Before advice
 	
