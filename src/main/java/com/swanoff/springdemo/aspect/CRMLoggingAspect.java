@@ -38,6 +38,14 @@ public class CRMLoggingAspect {
 		myLogger.info("=====>> in @Before: calling method: " + theMethod);
 		
 		// display the arguements to the method
+		
+		// get the arguements
+		Object[] args = theJoinPoint.getArgs();
+		
+		// loop thorugh and display the arguements
+		for (Object tempArg : args) {
+			myLogger.info("=====>> arguement: " + tempArg);
+		}
 	}
 	
 	// add @AfterReturning advice
