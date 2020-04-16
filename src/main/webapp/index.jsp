@@ -1,1 +1,5 @@
-<% response.sendRedirect("customer/list"); %>
+<html>
+	<body>
+		<h3>Spring CRM Rest Demo</h3>
+	</body>
+</html>
